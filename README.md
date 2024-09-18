@@ -75,6 +75,7 @@ model = KMeans(n_clusters=4, random_state=1)
 
     # Fit the K-Means model using the scaled DataFrame
 model.fit(crypto_data_scaled_df)  
+
 ![image](https://github.com/user-attachments/assets/98e3c401-8f6c-4844-b690-a9e63cf2fcb7)
 
     # Predict the clusters to group the cryptocurrencies using the scaled DataFrame
@@ -272,12 +273,75 @@ crypto_pca_predictions_df.hvplot.scatter(
 
 ![image](https://github.com/user-attachments/assets/347c995a-30ad-4162-b8b2-409e2fdf4a35)
 
+Visualize and Compare the Results
+In this section, you will vusually analyze the cluster analysis results by contrasting the outcome with and without using the optimization techniques.
+
+    # Composite plot to contrast the Elbow curves 
+    # Create the Elbow curve plot for the original data
+elbow_curve_original = df_elbow.hvplot.line(
+    x="k", 
+    y="inertia", 
+    xlabel="Number of Clusters (k)", 
+    ylabel="Inertia", 
+    title="Original Elbow Curve",
+    line_width=2,
+    color="blue",
+    legend='top_left'
+)
+
+    # Create the Elbow curve plot for the PCA data
+elbow_curve_pca = df_elbow_pca.hvplot.line(
+    x="k", 
+    y="inertia", 
+    xlabel="Number of Clusters (k)", 
+    ylabel="Inertia", 
+    title= "PCA elbow curve",
+    line_width=2,
+    color="green",
+    legend='top_left'
+)
+
+    # Combine the plots into a composite plot
+    # composite_plot = elbow_curve_original * elbow_curve_pca 
+
+    # Display the composite plot
+    #composite_plot  
+elbow_curve_original + elbow_curve_pca  
+
+ ![image](https://github.com/user-attachments/assets/01aba18c-0cd5-4ec1-bf2b-83ce1ca9cc5e)
 
 
 
- 
+    Composite plot to contrast the clusters 
+orginal_cluster_plot =crypto_data_scaled_df_preditcted.hvplot.scatter(
+    x="price_change_percentage_24h",
+    y="price_change_percentage_7d",
+    by="crypto_segment",
+    hover_cols=["coinid"],
+    title= "Crypto Segmentation based on K-Means Clustering (k=4)"
+)
+
+pca_plot = crypto_pca_predictions_df.hvplot.scatter(
+    x="PCA1",
+    y="PCA2",
+    by="clusters",
+    hover_cols=["coinid"], 
+    title = "Crypto Clusters" 
+) 
+
+orginal_cluster_plot + pca_plot 
+
+
+
+
+
+![image](https://github.com/user-attachments/assets/ea766352-1309-4b65-9711-0c515187d326)
+
+
+
  
  
  ##  Answer the following question:
-        What is the impact of using fewer features to cluster the data using K-Means?
+        What is the impact of using fewer features to cluster the data using K-Means? 
+        The impact results in a reduction of noise as well as an improvement in the seperation of the 3 Visual components: segments,visualization, and the clustering performance.
 
