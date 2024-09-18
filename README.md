@@ -22,11 +22,6 @@ crypto_data_scaled_df.head()
 
 
 
-
-        
-        
-
-
 # Find the Best Value for k Using the Original Scaled DataFrame 
     Use the elbow method to find the best value for k using the following steps:
     # Create a list with the number of k-values from 1 to 11
@@ -101,14 +96,27 @@ crypto_data_scaled_df_preditcted.head()
 ![image](https://github.com/user-attachments/assets/9562d627-90ea-402f-8323-306b39a65f2d) 
 
     
-    
-    
-    
-    
-    Create a scatter plot using hvPlot as follows:
+     Create a scatter plot using hvPlot as follows:
+     
         Set the x-axis as "price_change_percentage_24h" and the y-axis as "price_change_percentage_7d".
         Color the graph points with the labels found using K-means.
-        Add the "coin_id" column in the hover_cols parameter to identify the cryptocurrency represented by each data point.
+        Add the "coin_id" column in the hover_cols parameter to identify the cryptocurrency represented by each data point.  
+
+crypto_data_scaled_df_preditcted.hvplot.scatter(
+    x="price_change_percentage_24h",
+    y="price_change_percentage_7d",
+    by="crypto_segment",
+    hover_cols=["coinid"],
+    title= "Crypto Segmentation based on K-Means Clustering (k=4)"
+)
+
+
+C:\Users\Evan\Documents\ShareX\Screenshots\2024-09\Code_ZCFeG9m0H4.png
+
+
+
+
+        
 
 Optimize Clusters with Principal Component Analysis
 
