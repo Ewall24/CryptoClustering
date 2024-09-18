@@ -98,7 +98,7 @@ crypto_data_scaled_df_preditcted["crypto_segment"] = k_4
     # Display the copy of the scaled DataFrame
 crypto_data_scaled_df_preditcted.head()
 
-    ![image](https://github.com/user-attachments/assets/9562d627-90ea-402f-8323-306b39a65f2d) 
+![image](https://github.com/user-attachments/assets/9562d627-90ea-402f-8323-306b39a65f2d) 
 
     
     
