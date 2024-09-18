@@ -79,10 +79,29 @@ model = KMeans(n_clusters=4, random_state=1)
 model.fit(crypto_data_scaled_df)  
 ![image](https://github.com/user-attachments/assets/98e3c401-8f6c-4844-b690-a9e63cf2fcb7)
 
+    # Predict the clusters to group the cryptocurrencies using the scaled DataFrame
+k_4 = model.predict(crypto_data_scaled_df)
 
+    # Print the resulting array of cluster values.
+k_4 
 
-    Predict the clusters to group the cryptocurrencies using the original scaled DataFrame.
-    Create a copy of the original data and add a new column with the predicted clusters.
+    # Create a copy of the scaled DataFrame
+crypto_data_scaled_df_preditcted = crypto_data_scaled_df.copy() 
+
+    
+    # Add a new column to the copy of the scaled DataFrame with the predicted clusters
+crypto_data_scaled_df_preditcted["crypto_segment"] = k_4
+
+    # Display the copy of the scaled DataFrame
+crypto_data_scaled_df_preditcted.head()
+
+    ![image](https://github.com/user-attachments/assets/9562d627-90ea-402f-8323-306b39a65f2d) 
+
+    
+    
+    
+    
+    
     Create a scatter plot using hvPlot as follows:
         Set the x-axis as "price_change_percentage_24h" and the y-axis as "price_change_percentage_7d".
         Color the graph points with the labels found using K-means.
