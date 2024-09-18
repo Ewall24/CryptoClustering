@@ -2,12 +2,26 @@
 Prepare the Data
 
     Use the StandardScaler() module from scikit-learn to normalize the data from the CSV file.
+crypto_data_scaled = StandardScaler().fit_transform(df_market_data[["price_change_percentage_24h","price_change_percentage_7d","price_change_percentage_14d","price_change_percentage_30d","price_change_percentage_60d","price_change_percentage_200d","price_change_percentage_1y"]])
+crypto_data_scaled[:5]
 
-    Create a DataFrame with the scaled data and set the "coin_id" index from the original DataFrame as the index for the new DataFrame.
+    Create a DataFrame with the scaled data
+crypto_data_scaled_df = pd.DataFrame(crypto_data_scaled, columns= ["price_change_percentage_24h","price_change_percentage_7d","price_change_percentage_14d","price_change_percentage_30d","price_change_percentage_60d","price_change_percentage_200d","price_change_percentage_1y"])
+crypto_data_scaled_df.head()
 
-        The first five rows of the scaled DataFrame should appear as follows:
+    Copy the crypto names from the original DataFrame
+crypto_data_scaled_df["coin_id"] =df_market_data.index
 
-        The first five rows of the scaled DataFrame
+    Set the coin_id column as index
+crypto_data_scaled_df = crypto_data_scaled_df.set_index("coin_id") 
+
+    Display the scaled DataFrame
+crypto_data_scaled_df.head()
+    
+C:\Users\Evan\Documents\ShareX\Screenshots\2024-09\firefox_KcRNOkb5uY.png
+
+        
+        
 
 
 # Find the Best Value for k Using the Original Scaled DataFrame 
