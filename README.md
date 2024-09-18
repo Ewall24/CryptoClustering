@@ -110,8 +110,9 @@ crypto_data_scaled_df_preditcted.hvplot.scatter(
     title= "Crypto Segmentation based on K-Means Clustering (k=4)"
 )
 
+![image](https://github.com/user-attachments/assets/bdd324d6-fc60-423b-abc3-9aa976582e8b)
 
-C:\Users\Evan\Documents\ShareX\Screenshots\2024-09\Code_ZCFeG9m0H4.png
+
 
 
 
