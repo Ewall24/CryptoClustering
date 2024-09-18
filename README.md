@@ -67,12 +67,20 @@ df_elbow.hvplot.line(
 # Answer the following question in your notebook: What is the best value for k?
 ### The number four is the best value for K according to the elbow curve.
 
+
 # Cluster Cryptocurrencies with K-means Using the Original Scaled Data
 
 Use the following steps to cluster the cryptocurrencies for the best value for k on the original scaled data:
 
-    Initialize the K-means model with the best value for k.
-    Fit the K-means model using the original scaled DataFrame.
+    # Initialize the K-Means model using the best value for k
+model = KMeans(n_clusters=4, random_state=1) 
+
+    # Fit the K-Means model using the scaled DataFrame
+model.fit(crypto_data_scaled_df)  
+![image](https://github.com/user-attachments/assets/98e3c401-8f6c-4844-b690-a9e63cf2fcb7)
+
+
+
     Predict the clusters to group the cryptocurrencies using the original scaled DataFrame.
     Create a copy of the original data and add a new column with the predicted clusters.
     Create a scatter plot using hvPlot as follows:
