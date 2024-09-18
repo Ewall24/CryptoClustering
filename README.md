@@ -201,25 +201,83 @@ df_elbow_pca
 
 
 
+    # Plot a line chart with all the inertia values computed with
+    # the different values of k to visually identify the optimal value for k.
+df_elbow_pca.hvplot.line(
+    x="k",
+    y="inertia",
+    title="Elbow Curve PCA",
+    xticks=k
+)
+    
+    
+![image](https://github.com/user-attachments/assets/aac3ffaf-d95f-44b2-884d-23a5c1645d33)
 
     
-    Plot a line chart with all the inertia values computed with the different values of k to visually identify the optimal value for k.
-    Answer the following question in your notebook:
+    
+    
+    
+    
+    
+   # Answer the following question in your notebook:
         What is the best value for k when using the PCA data?
+        The best value for K according to the elbow curve above is 4.  
+        
         Does it differ from the best k value found using the original data?
-
+        Yes, the best value for K does differ in this instance.
+ 
+  
   Cluster Cryptocurrencies with K-means Using the PCA Data
 
 ## Use the following steps to cluster the cryptocurrencies for the best value for k on the PCA data:
 
-    Initialize the K-means model with the best value for k.
-    Fit the K-means model using the PCA data.
-    Predict the clusters to group the cryptocurrencies using the PCA data.
-    Create a copy of the DataFrame with the PCA data and add a new column to store the predicted clusters.
-    Create a scatter plot using hvPlot as follows:
-        Set the x-axis as "PC1" and the y-axis as "PC2".
-        Color the graph points with the labels found using K-means.
-        Add the "coin_id" column in the hover_cols parameter to identify the cryptocurrency represented by each data point.
+    # Initialize the K-Means model using the best value for k
+model = KMeans(n_clusters=4, random_state=0) 
+
+    # Fit the K-Means model using the PCA data
+model.fit(crypto_pca_df) 
+
+![image](https://github.com/user-attachments/assets/6d2dd256-bc5b-4b39-8486-6e2bfed78deb)  
+
+
+    # Predict the clusters to group the cryptocurrencies using the scaled PCA DataFrame
+k_4 = model.predict(crypto_pca_df)
+
+    # Print the resulting array of cluster values.
+k_4
+
+    # Create a copy of the scaled PCA DataFrame
+crypto_pca_predictions_df = crypto_pca_df.copy()
+
+    # Add a new column to the copy of the PCA DataFrame with the predicted clusters
+crypto_pca_predictions_df["clusters"] = k_4  
+
+    # Display the copy of the scaled PCA DataFrame
+crypto_pca_predictions_df.head()
+
+![image](https://github.com/user-attachments/assets/d83ac7dc-b04d-42fd-9d4f-11ed3a1f8188)  
+
+    # Create a scatter plot using hvPlot by setting
+    # `x="PC1"` and `y="PC2"`.
+    # Color the graph points with the labels found using K-Means and
+    # add the crypto name in the `hover_cols` parameter to identify
+    # the cryptocurrency represented by each data point.
+crypto_pca_predictions_df.hvplot.scatter(
+    x="PCA1",
+    y="PCA2",
+    by="clusters",
+    hover_cols=["coinid"], 
+    title = "Crypto Clusters" # Add the cryptocurrency name to hover information
+)
+
+![image](https://github.com/user-attachments/assets/347c995a-30ad-4162-b8b2-409e2fdf4a35)
+
+
+
+
+ 
+ 
+ 
  ##  Answer the following question:
         What is the impact of using fewer features to cluster the data using K-Means?
 
