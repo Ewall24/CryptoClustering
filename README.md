@@ -122,15 +122,47 @@ crypto_data_scaled_df_preditcted.hvplot.scatter(
 Optimize Clusters with Principal Component Analysis
 
     Using the original scaled DataFrame, perform a PCA and reduce the features to three principal components.
+    # Create a PCA model instance and set `n_components=3`.
+pca = PCA(n_components=3)  
 
-    Retrieve the explained variance to determine how much information can be attributed to each principal component and then answer the following question in your notebook:
+    # Use the PCA model with `fit_transform` to reduce the original scaled DataFrame
+    # down to three principal components.
+crypto_pca = pca.fit_transform(crypto_data_scaled)
+
+    
+Retrieve the explained variance to determine how much information can be attributed to each principal component and then answer the following question in your notebook:
         What is the total explained variance of the three principal components?
 
-    Create a new DataFrame with the PCA data and set the "coin_id" index from the original DataFrame as the index for the new DataFrame.
+    # Retrieve the explained variance to determine how much information
+    # can be attributed to each principal component.
+pca.explained_variance_ratio_ 
 
-        The first five rows of the PCA DataFrame should appear as follows:
 
-        The first five rows of the PCA DataFrame
+ Answer the following question: 
+    What is the total explained variance of the three principal components?
+    The answer is: O.89 or 89%
+        
+    # Create a new DataFrame with the PCA data.
+crypto_pca_df = pd.DataFrame(
+    crypto_pca,
+    columns=["PCA1", "PCA2", "PCA3"]
+)
+
+    # Copy the crypto names from the original scaled DataFrame
+crypto_pca_df['coinid'] = df_market_data.index  
+
+    # Set the coin_id column as index
+crypto_pca_df.set_index('coinid', inplace=True) 
+
+    # Display the scaled PCA DataFrame
+crypto_pca_df.head()  
+
+![image](https://github.com/user-attachments/assets/352b8655-4a9a-487b-bfae-b46f05ad5709)
+
+
+
+
+        
 
 Find the Best Value for k Using the PCA Data
 
