@@ -18,7 +18,8 @@ crypto_data_scaled_df = crypto_data_scaled_df.set_index("coin_id")
     Display the scaled DataFrame
 crypto_data_scaled_df.head()
 
-   C:\Users\Evan\Documents\ShareX\Screenshots\2024-09\Code_d2XzLNnlND.png
+![Code_d2XzLNnlND](https://github.com/user-attachments/assets/37c25862-8be0-4c47-b9a1-5e275a8a0375)
+
 
 
 
