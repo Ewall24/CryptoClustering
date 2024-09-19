@@ -227,7 +227,7 @@ df_elbow_pca.hvplot.line(
         The best value for K according to the elbow curve above is 4.  
         
         Does it differ from the best k value found using the original data?
-        Yes, the best value for K does differ in this instance.
+        The elbow curve suggests that the optimal value for k is around 4, due to this being where inertia starts to decrease at a slower rate.
  
   
   Cluster Cryptocurrencies with K-means Using the PCA Data
@@ -345,5 +345,5 @@ orginal_cluster_plot + pca_plot
  
  ##  Answer the following question:
         What is the impact of using fewer features to cluster the data using K-Means? 
-        The impact results in a reduction of noise as well as an improvement in the seperation of the 3 Visual components: segments,visualization, and the clustering performance.
+        The impact results in a reduction of noise as well as an improvement in the seperation of the 3 Visual components: segments,visualization, and the clustering performance. By comparing the clustering results from the orginal dataset along with the PCA-transformed data; the result ends up being a highlighted effect of the dimensionality reduction on the overall clustering process.
 
