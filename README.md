@@ -1,7 +1,8 @@
 # CryptoClustering 
 Prepare the Data
 
-    Use the StandardScaler() module from scikit-learn to normalize the data from the CSV file.
+    Use the StandardScaler() module from scikit-learn to normalize the data from the CSV file. 
+    Create Scaled DataFrame: Set "coin_id" as the index for the new DataFrame.
 crypto_data_scaled = StandardScaler().fit_transform(df_market_data[["price_change_percentage_24h","price_change_percentage_7d","price_change_percentage_14d","price_change_percentage_30d","price_change_percentage_60d","price_change_percentage_200d","price_change_percentage_1y"]])
 crypto_data_scaled[:5]
 
